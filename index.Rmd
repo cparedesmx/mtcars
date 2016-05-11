@@ -1,0 +1,74 @@
+---
+title       : Exploring mtcars
+subtitle    : Slidify presentation for Developing Data Products
+author      : Cutberto Paredes
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+ext_widgets : {rCharts: [libraries/nvd3]}
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = FALSE)
+knitr::opts_chunk$set(message =  FALSE)
+```
+## Introduction
+
+- This is a brief exploration of the mtcars dataset that comes with R.
+
+- First, let's declare as factors those variables that are actually factors.
+
+```{r Preprocess1}
+mtcars$am <- factor(mtcars$am, labels = c('Automatic', 'Manual'))
+mtcars$vs <- factor(mtcars$vs)
+mtcars$gear <- factor(mtcars$gear)
+mtcars$cyl <- factor(mtcars$cyl)
+```
+
+- Also, let's add a new field: $hp/mt$. This value was found by Henderson and 
+Velleman (1981) to explain $mpg$. We'll do regression in a bit.
+
+```{r Preprocess2}
+mtcars$rhpwt <- mtcars$hp / mtcars$wt
+```
+
+---
+## Pairs Plot
+
+This plot shows the correlation between pairs of variables.
+
+```{r ggpairs, echo = FALSE, fig.width=12, fig.align='center'}
+library(ggplot2)
+library(GGally)
+ggpairs(mtcars, mapping = aes(bins = 25))
+```
+
+---
+## Linear Regression Model
+
+This command fits a linear regression model using $hp$, $rhpwt$ and $am$ as 
+interacting regressors. Both $r^2$ and coefficients are shown below.
+
+```{r fitLM}
+fit <- lm(mpg ~ hp*rhpwt*am, mtcars)
+```
+
+```{r summary, echo=FALSE}
+summary(fit)[c(8,4)]
+```
+
+---
+## Interactive Plot
+
+This rCharts plot shows the relationship between $mpg$ and $rhpwt$.
+
+```{r plot, echo = FALSE, results = 'asis'}
+library(rCharts)
+library(knitr)
+n1 <- rPlot(mpg ~ rhpwt, data = mtcars, color = 'am', type = 'point')
+n1
+```
