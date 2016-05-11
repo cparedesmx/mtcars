@@ -38,7 +38,7 @@ ggpairs(mtcars, mapping = aes(bins = 25))
 ---
 ## The app itself
 
-- The app is included below as an iframe, but it's also available here: https://cparedes.shinyapps.io/shiny/
+- The app is available here: https://cparedes.shinyapps.io/shiny/
 
 - This is how it looks:
 

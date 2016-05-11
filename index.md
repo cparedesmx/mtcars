@@ -25,12 +25,12 @@ the coefficients, $r^2$ values and a standardized residuals QQ plot.
 
 This plot may help you select regressors.
 
-<img src="figure/ggpairs-1.png" title="plot of chunk ggpairs" alt="plot of chunk ggpairs" style="display: block; margin: auto;" />
+<img src="assets/fig/ggpairs-1.png" title="plot of chunk ggpairs" alt="plot of chunk ggpairs" style="display: block; margin: auto;" />
 
 ---
 ## The app itself
 
-- The app is included below as an iframe, but it's also available here: https://cparedes.shinyapps.io/shiny/
+- The app is available here: https://cparedes.shinyapps.io/shiny/
 
 - This is how it looks:
 
@@ -42,4 +42,4 @@ This plot may help you select regressors.
 This rCharts plot shows the relationship between $mpg$ and $hp$, a regressor I 
 suggest to include.
 
-<iframe src=' figure/plot-1.html ' scrolling='no' frameBorder='0' seamless class='rChart polycharts ' id=iframe- chart1b0c54a947a ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style>
+<iframe src=' assets/fig/plot-1.html ' scrolling='no' frameBorder='0' seamless class='rChart polycharts ' id=iframe- chart1ff0787d4e98 ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style>
